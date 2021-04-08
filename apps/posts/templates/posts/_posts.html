@@ -1,0 +1,20 @@
+{% comment %} <div class="col mb-3"> {% endcomment %}
+{% url "posts:single" pk=post.pk as post_url %}
+  <div class="imageWrapper">
+    <div class="postHeader">
+      <h1 class='fs-5 m-0'>
+        <a href="#">Author</a>
+      </h1>
+    </div>
+    {% if request.path != post_url %}
+      <a href="{% url 'posts:single' pk=post.pk%}" class='stretched-link' role='button'></a>
+    {% else %}
+      <a href="#" class='stretched-link zoom-in' role='button'></a>
+    {% endif %}
+    <img src="{{post.image.url}}" alt="{{post.title}}"class='imageItem'/>
+    <div class="postFooter">
+      <button class='btn'><i class='far fa-thumbs-up'></i></button>
+      <button class='btn'><i class="fas fa-download"></i></button>
+    </div>
+  </div>
+{% comment %} </div> {% endcomment %}

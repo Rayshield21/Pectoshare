@@ -1,0 +1,5 @@
+{% if not form.instance.pk %}
+  {% include 'form_base.html' with action='Create Post' action_url='posts:create' enctype='multipart/form-data'%}
+{% else %}
+  {% include 'form_base.html' with action='Update Post' action_url='posts:create' enctype='multipart/form-data'%}
+{% endif %}

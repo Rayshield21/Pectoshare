@@ -1,0 +1,127 @@
+@import 'variables';
+@import 'header';
+
+main{
+  .customJtron{
+    background: url('../images/landingImage.jpeg') fixed no-repeat;
+    height: 75vh;
+  }  
+  .postList{
+    .container{
+      .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 1em;
+        grid-auto-flow: dense;
+        .imageWrapper{
+          position: relative;
+          color: white;
+          transition: all 0.25s;
+          &:hover{
+            img{
+              filter: brightness(30%);
+              background-color: transparentize($color: #000000, $amount: 0.3);
+            }
+            :not(img){
+              opacity: 1;
+            }
+          }
+          .postHeader{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 100%;
+            z-index: 2;
+            opacity: 0;
+            transition: all 0.25s;
+            h1{
+              z-index: 2;
+              a{
+                text-decoration: none;
+                color: white;
+                &:hover{
+                  color: $light-blue;
+                }
+              }
+            }
+            small{
+              display: block;
+            }
+          }
+          .postFooter{
+            color: white;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            // width: 100%;
+            z-index: 2;
+            opacity: 0;
+            transition: all 0.25s;
+            .fa-thumbs-up, .fa-download{
+              color:white;
+              transition: all 0.25s;
+              &:hover{
+                color: $light-blue;
+              }
+            }
+          }
+          img{
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: all 0.25s;
+            border-radius: 5px;
+          }
+        }
+        .imageWrapper.landscape{
+          grid-column-end: span 3;
+        }
+        .imageWrapper.big{
+          grid-column-end: span 2;
+        }
+        .imageWrapper.portrait{
+          grid-row-end: span 3;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  main{
+    .postList{
+      .container{
+        .grid{
+          display: block;
+          .imageWrapper{
+            // position: static;
+            margin-bottom: 1em; 
+            .postHeader, .postFooter{
+              left: 0;
+              padding: 1em 0;
+              display: block;
+              opacity: 1;
+              position: relative;
+              color: black;
+              z-index:2;
+            }
+            .postHeader{
+              h1{
+                a{
+                  text-decoration: none;
+                  color: black;
+                }
+              }
+            }
+            .postFooter{
+              .fa-download, .fa-thumbs-up{
+                color: black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

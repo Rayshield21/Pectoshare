@@ -1,0 +1,15 @@
+{% extends 'posts/post_base.html' %}
+{% load static %}
+{% block css_file %}
+  <link rel="stylesheet" href="{%static 'css/detail.css'%}">
+{% endblock  %}
+{% block section_main %}
+  <section class='postDetail'>
+    {% comment %} <div class="container mb-3 "> {% endcomment %}
+      {% include 'posts/_posts.html' %}
+    {% comment %} </div> {% endcomment %}
+  </section>
+{% endblock  %}
+{% block js_file %}
+  <script src="{%static 'js/detail.js'%}" type='text/javascript'></script>
+{% endblock  %}

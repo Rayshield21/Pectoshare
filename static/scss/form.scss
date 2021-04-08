@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'header';
+
+main{
+  .container{
+    .formWrapper{
+      max-width: 375px;
+    }
+  }
+}

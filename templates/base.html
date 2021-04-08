@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap5 %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block header_title %}{% endblock %}</title>
+  <!-- Bootstrap Assets only -->
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  {% block css_file %}{% endblock  %}
+</head>
+<body>
+  <div class="container">
+    <header class='pb-2 mt-2 border-bottom w-100'>
+      <nav class='d-flex align-items-center justify-content-between'>
+        <a href="{% url 'home' %}" class='text-dark text-decoration-none d-flex align-items-center'>
+          <img src="{%static 'images/logo.svg' %}" alt="Brand Logo" class='svgLogo'>
+          <span class="brand ms-2">PectoShare</span>
+        </a>
+        <button class='mr-3 btn btn-sm collapseToggler d-block d-md-none' data-bs-toggle='collapse' href='#collapseHeader'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" width='30' height='30' viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+          </svg>
+        </button>
+        <ul class="list-group list-group-horizontal d-none d-md-flex">
+          {% if user.is_authenticated %}
+            <li class="list-group-item">
+              <a href="">Contribute</a>
+            </li>
+            <li class="list-group-item">
+              <a href="">Profile</a>
+            </li>
+            <li class="list-group-item">
+              <a href="">Logout</a>
+            </li>
+          {% else %}
+            <li class="list-group-item">
+              <a href="{%url 'posts:create' %}">Contribute</a>
+            </li>
+            <li class="list-group-item">
+              <a href="">Sign Up</a>
+            </li>
+            <li class="list-group-item">
+              <a href="">Login</a>
+            </li>
+          {% endif %}
+      </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="list-group list-group-flush collapse" id='collapseHeader'>
+    {% if user.is_authenticated %}
+      <a href="" class="list-group-item list-group-item-action">Contribute</a>
+      <a href="" class="list-group-item list-group-item-action">Profile</a>
+      <a href="" class="list-group-item list-group-item-action">Logout</a>
+    {% else %}
+      <a href="" class="list-group-item list-group-item-action">
+        Contribute
+      </a>
+      <a href="" class="list-group-item list-group-item-action">Sign Up</a>
+      <a href="" class="list-group-item list-group-item-action">Login</a>
+    {% endif %}
+  </div>
+  <main class='mt-2'>
+    {% block content %}{% endblock  %}
+  </main>
+  <footer></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
+  {% block js_file %}{% endblock  %}
+</body>
+</html>

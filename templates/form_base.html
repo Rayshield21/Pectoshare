@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_title %}{{action}}{% endblock %}
+{% block css_file %}
+  <link rel="stylesheet" href="{%static 'css/form.css'%}">{% endblock  %}
+{% load bootstrap5 %}
+{% block content %}
+  <div class="container">
+  {% bootstrap_alert form.errors alert_type='error'%}
+    <div class="formWrapper mx-auto">
+      <h1 class="border-bottom fs-3 pb-3 my-3 text-center">{{action}}</h1>
+      <div class="imagePreview hidden"></div>
+      <form enctype="{{enctype}}" action="{% url action_url %}" method='POST'>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type='button' class="btn btn-warning">Cancel</button>
+        <button type='submit' class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock  %}
+{% block js_file %}<script src="{%static 'js/form.js'%}" type='text/javascript'></script>{% endblock  %}
