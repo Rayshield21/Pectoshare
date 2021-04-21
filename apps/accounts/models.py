@@ -1,20 +1,25 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.contrib.auth import models as auth_models
+from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-User = get_user_model()
+
+class User(auth_models.User, auth_models.PermissionsMixin):
+  def __str__(self):
+    return self.username
+    
 # Create your models here.
 class Profile(models.Model):
+  class WorkStatus(models.TextChoices):
+    LOOKING_FOR_WORK = 'Looking for Work', _('Looking for Work')
+    EMPLOYER = 'Employer', _('Employer')
   user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
   first_name = models.CharField(max_length=255, blank=True)
   last_name = models.CharField(max_length=255, blank=True)
   profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
-  STATUS_CHOICES = [
-    (LOOKING_FOR_WORK, 'Looking for Work'),
-    (EMPLOYER, 'Employer')
-  ]
+
   status = models.CharField(max_length=255,
-    choices=STATUS_CHOICES, default=LOOKING_FOR_WORK)
+    choices=WorkStatus.choices, default=WorkStatus.LOOKING_FOR_WORK, blank=True)
   
   def __str__(self):
     if self.first_name and self.last_name:

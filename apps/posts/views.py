@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . import models
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 # List Post
@@ -14,7 +15,7 @@ class SinglePost(generic.DetailView):
   model = models.Post
   template_name = 'posts/post_detail.html'
 
-class CreatePost(generic.CreateView):
+class CreatePost(LoginRequiredMixin, generic.CreateView):
   model = models.Post
   template_name = 'posts/post_form.html'
   fields = ['title', 'image']
