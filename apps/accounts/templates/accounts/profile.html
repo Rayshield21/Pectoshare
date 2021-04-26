@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_title %}
+  {{profile}}'s Profile
+{% endblock  %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock  %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 text-center"> 
+        <div class="profileImageWrapper">
+          {% if profile.profile_pic %}
+            picture
+          {% else %}
+            <i class='fas fa-user-secret'></i>
+          {% endif %}
+        </div>
+        <div class="flex justify-content-around">
+          <span ='fs-1'>{{profile.user}}</span>
+          <button class='btn btn-sm btn-primary align-self-top' aria-label='Edit Profile'><i class="fas fa-user-edit"></i></button>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <h3>{{profile.name}}</h3>
+        <ul class='list-group list-group-flush'>
+          <li class='list-group-item'>
+            <i class='fas fa-building'></i> {{profile.company | default:'- -'}}
+          </li>
+          <li class='list-group-item'>
+            <i class="fas fa-map-marked-alt"></i> {{profile.location | default:'- -'}}
+          </li>
+          <li class='list-group-item'>
+            <i class="fas fa-briefcase"></i> {{profile.status}}
+          </li>
+          <li class='list-group-item'>
+            <i class="fas fa-globe"></i> {{profile.website | default:'- -'}}
+          </li>
+          <li class='list-group-item'>
+            <i class="fas fa-info-circle"></i> {{profile.bio | default:'Nothing about me'}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock  %}
