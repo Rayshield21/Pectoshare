@@ -2,3 +2,4 @@ Django >= 3.1.7, < 3.2
 Pillow >= 8.0, < 9.0
 django-bootstrap-v5 
 django-cleanup
+django-braces
