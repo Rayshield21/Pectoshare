@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
+from braces.views import SelectRelatedMixin
 from . import forms, models
 # Create your views here.
 
@@ -16,7 +17,10 @@ class Profile(DetailView):
   model = models.Profile
   template_name = 'accounts/profile.html'
 
-  def get_context_data(self, *args, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['profile_fields'] = self.model._meta.get_fields()
-    return context
+class EditProfile(UpdateView):
+  model = models.Profile
+  form_class = forms.ProfileForm
+  template_name = 'accounts/edit_profile.html'
+
+  def get_success_url(self):
+    return reverse('accounts:profile', kwargs={'slug': self.kwargs['slug']})

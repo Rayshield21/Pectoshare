@@ -22,8 +22,6 @@ class Profile(models.Model):
   slug = models.SlugField(allow_unicode=True, unique=True)
   
   def __str__(self):
-    if self.name:
-      return "{name}".format(self.name)
     return self.user.username
 
   def save(self, *args, **kwargs):

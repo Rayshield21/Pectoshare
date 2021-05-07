@@ -1,1 +1,2 @@
-{% include 'form_base.html' with action='Register' action_url='accounts:register'%}
+{% url 'accounts:register' as action_url %}
+{% include 'form_base.html' with action='Register' form_url=action_url%}

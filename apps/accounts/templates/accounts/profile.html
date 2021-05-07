@@ -12,14 +12,16 @@
       <div class="col-sm-3 text-center"> 
         <div class="profileImageWrapper">
           {% if profile.profile_pic %}
-            picture
+            <img class='profilePic rounded' src="{{profile.profile_pic.url}}" alt="profile picture">
           {% else %}
             <i class='fas fa-user-secret'></i>
           {% endif %}
         </div>
         <div class="flex justify-content-around">
-          <span ='fs-1'>{{profile.user}}</span>
-          <button class='btn btn-sm btn-primary align-self-top' aria-label='Edit Profile'><i class="fas fa-user-edit"></i></button>
+          <span class='fs-3'>{{profile.user}}</span>
+          <a href="{% url 'accounts:edit_profile' slug=profile.slug pk=profile.pk%}" class='btn btn-primary align-self-top' aria-label='Edit Profile'> 
+            <i class="fas fa-user-edit"></i>
+          </a>
         </div>
       </div>
       <div class="col-sm-9">

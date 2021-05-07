@@ -35,7 +35,7 @@ main .container .profileImageWrapper {
   margin: auto;
 }
 
-main .container .profileImageWrapper .fa-user-secret {
+main .container .profileImageWrapper .fa-user-secret, main .container .profileImageWrapper .profilePic {
   width: 100%;
   height: 100%;
 }
