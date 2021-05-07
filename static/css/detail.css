@@ -1,1 +1,111 @@
-header nav a .brand{font-size:1.2rem}header nav a .brand:hover{color:#5EBAE7}header nav .list-group .list-group-item{border:none}header nav .list-group .list-group-item a{text-decoration:none;color:black;font-size:1.2rem}header nav .list-group .list-group-item a:hover{color:lightblue}.collapse .list-group-item-action:hover{color:white;background-color:#5EBAE7}.svgLogo{max-width:70px;max-height:70px}main .postDetail{height:100vh;width:100vw;margin:0 auto}main .postDetail .imageWrapper.zoomed-in{width:100%;height:100%}main .postDetail .imageWrapper.zoomed-out{width:50%;height:75%;margin:0 auto}main .postDetail .imageWrapper{position:relative;color:white;-webkit-transition:all 0.25s;transition:all 0.25s}main .postDetail .imageWrapper .stretched-link.zoom-in{cursor:-webkit-zoom-in;cursor:zoom-in}main .postDetail .imageWrapper .stretched-link.zoom-out{cursor:-webkit-zoom-out;cursor:zoom-out}main .postDetail .imageWrapper .postHeader,main .postDetail .imageWrapper .postFooter{left:0;padding:1em 0;display:block;opacity:1;position:relative;color:black;z-index:2}main .postDetail .imageWrapper .postHeader h1 a{text-decoration:none;color:black}main .postDetail .imageWrapper .postFooter{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}main .postDetail .imageWrapper .postFooter .fa-download,main .postDetail .imageWrapper .postFooter .fa-thumbs-up{color:black}main .postDetail .imageWrapper img{border:2px solid black;display:block;width:100%;height:auto;max-height:100%;-webkit-transition:all 0.25s;transition:all 0.25s;border-radius:5px}@media (max-width: 725px) and (hover: none){main .postDetail .imageWrapper.zoomed-out{width:75%;height:60%}}
+header nav a .brand {
+  font-size: 1.2rem;
+}
+
+header nav a .brand:hover {
+  color: #5EBAE7;
+}
+
+header nav .list-group .list-group-item {
+  border: none;
+}
+
+header nav .list-group .list-group-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+header nav .list-group .list-group-item a:hover {
+  color: lightblue;
+}
+
+.collapse .list-group-item-action:hover {
+  color: white;
+  background-color: #5EBAE7;
+}
+
+.svgLogo {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+main .postDetail {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+}
+
+main .postDetail .imageWrapper.zoomed-in {
+  width: 100%;
+  height: 100%;
+}
+
+main .postDetail .imageWrapper.zoomed-out {
+  width: 50%;
+  height: 75%;
+  margin: 0 auto;
+}
+
+main .postDetail .imageWrapper {
+  position: relative;
+  color: white;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+main .postDetail .imageWrapper .stretched-link.zoom-in {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+main .postDetail .imageWrapper .stretched-link.zoom-out {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
+main .postDetail .imageWrapper .postHeader, main .postDetail .imageWrapper .postFooter {
+  left: 0;
+  padding: 1em 0;
+  display: block;
+  opacity: 1;
+  position: relative;
+  color: black;
+  z-index: 2;
+}
+
+main .postDetail .imageWrapper .postHeader h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+main .postDetail .imageWrapper .postFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+main .postDetail .imageWrapper .postFooter .fa-download, main .postDetail .imageWrapper .postFooter .fa-thumbs-up {
+  color: black;
+}
+
+main .postDetail .imageWrapper img {
+  border: 2px solid black;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-radius: 5px;
+}
+
+@media (max-width: 725px) and (hover: none) {
+  main .postDetail .imageWrapper.zoomed-out {
+    width: 75%;
+    height: 60%;
+  }
+}

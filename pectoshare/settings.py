@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'apps.posts',
+    'apps.accounts',
     'django_cleanup.apps.CleanupConfig'
 ]
 
@@ -152,3 +153,6 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'home'

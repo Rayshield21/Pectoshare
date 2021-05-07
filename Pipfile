@@ -6,7 +6,9 @@ name = "pypi"
 [packages]
 django-bootstrap-v5 = "*"
 Pillow = "<9.0,>=8.0"
-Django = "<3.2,>=3.1.7"
+Django = ">=3.1.7,<3.2"
+django-cleanup = "*"
+django-braces = "*"
 
 [dev-packages]
 

@@ -1,13 +1,11 @@
 // POST FORM TEMPLATE
-
-const imageInput = document.querySelector('#id_image');
+const imageInput = document.querySelector('.image_input');
 const imagePreview = document.querySelector('.imagePreview')
 if(imageInput){
   imageInput.addEventListener('change', e => {
     let { files } = e.target;
     if(files.length){
       imagePreview.classList.remove('hidden')
-  
       let reader = new FileReader()
       reader.addEventListener('load', () => {
         imagePreview.innerHTML = `
