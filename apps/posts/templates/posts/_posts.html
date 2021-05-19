@@ -1,20 +1,37 @@
-{% comment %} <div class="col mb-3"> {% endcomment %}
 {% url "posts:single" pk=post.pk as post_url %}
-  <div class="imageWrapper">
-    <div class="postHeader">
+<div class="imageWrapper">
+  <div class="postHeader d-flex justify-content-between">
+    <div class='authorInfo'>
       <h1 class='fs-5 m-0'>
-        <a href="#">Author</a>
+        <a href="{%url 'accounts:profile' slug=post.author.profile.slug%}">
+          {{post.author}}
+        </a>
       </h1>
+      {% if post.date_modified %}
+        <small>{{post.date_modified}} (edited)</small>
+      {% else %}
+        <small>{{post.date_added}}</small>
+      {% endif %}
     </div>
-    {% if request.path != post_url %}
-      <a href="{% url 'posts:single' pk=post.pk%}" class='stretched-link' role='button'></a>
-    {% else %}
-      <a href="#" class='stretched-link zoom-in' role='button'></a>
+    {% if user.is_authenticated and post.author == user %}
+      <div class="authorCommandButtons">
+        <a href="{% url 'posts:update' pk=post.pk %}" class="btn">
+          <i class="far fa-edit"></i>
+        </a>
+        <button class="btn deleteModalTrigger" data-deleteURL="{%url 'posts:delete' pk=post.pk%}">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
     {% endif %}
-    <img src="{{post.image.url}}" alt="{{post.title}}"class='imageItem'/>
-    <div class="postFooter">
-      <button class='btn'><i class='far fa-thumbs-up'></i></button>
-      <button class='btn'><i class="fas fa-download"></i></button>
-    </div>
   </div>
-{% comment %} </div> {% endcomment %}
+  {% if request.path != post_url %}
+    <a href="{% url 'posts:single' pk=post.pk%}" class='stretched-link' role='button'></a>
+  {% else %}
+    <a href="#" class='stretched-link zoom-in' role='button'></a>
+  {% endif %}
+  <img src="{{post.image.url}}" alt="{{post.title}}" class='imageItem'/>
+  <div class="postFooter">
+    <button class='btn'><i class='far fa-thumbs-up'></i></button>
+    <button class='btn'><i class="fas fa-download"></i></button>
+  </div>
+</div>

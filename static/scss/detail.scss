@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'header';
+@import 'globals';
 main{
   .postDetail{
     height:100vh;
@@ -39,14 +40,28 @@ main{
             a{
               text-decoration: none;
               color: black;
+              &:hover{
+                color: $light-blue;
+              }
             }
           }
+          .authorCommandButtons{
+            .fa-trash-alt, .fa-edit{
+              color: black;
+              &:hover{
+                color: $light-blue;
+              }
+            }
+          } 
         }
         .postFooter{
           display: flex;
           justify-content: flex-end;
           .fa-download, .fa-thumbs-up{
             color: black;
+            &:hover{
+              color: $light-blue;
+            }
           }
         } 
         img{

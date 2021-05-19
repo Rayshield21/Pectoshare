@@ -1,4 +1,4 @@
 {% url 'accounts:edit_profile' slug=form.instance.slug pk=form.instance.pk as action_url %}
 {% url 'accounts:profile' slug=form.instance.slug as cancel_url%}
-{% include 'form_base.html' with action='Edit Profile' form_url=action_url cancel_url=cancel_url enctype='multipart/form-data' instance_img=form.instance.profile_pic%}
+{% include '_form.html' with action='Edit Profile' form_url=action_url cancel_url=cancel_url enctype='multipart/form-data' instance_img=form.instance.profile_pic%}
 

@@ -2,4 +2,25 @@
 {% block content %}
   {% block section_head %}{% endblock %}
   {% block section_main %}{% endblock %}
+  <!-- Modal -->
+  <div class="modal deletePostModal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Delete Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <form class='deletePostForm' method="POST">
+            {% csrf_token %}
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class='btn btn-primary' value='Delete'/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock  %}

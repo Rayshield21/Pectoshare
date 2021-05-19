@@ -1,16 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.shortcuts import reverse
+from django.utils import timezone
 # Create your models here.
 
 class Post(models.Model):
-  title = models.CharField(max_length=100, unique=True)
+  author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post', default=None)
+  title = models.CharField(max_length=255, default=None)
   image = models.ImageField(upload_to='images/')
-  date_added = models.DateTimeField(auto_now_add=True)
+  date_added = models.DateTimeField(editable=False)
+  date_modified = models.DateTimeField(editable=False, blank=True, null=True)
 
   def __str__(self):
-      return self.title
+    return self.title
 
   def get_absolute_url(self):
-      return reverse("home")
+    return reverse("home")
   
-  
+  def save(self, *args, **kwargs):
+    if not self.id:
+      self.date_added = timezone.now()
+    else:
+      self.date_modified = timezone.now()
+    return super(Post, self).save(*args, **kwargs)
+    

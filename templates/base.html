@@ -27,10 +27,10 @@
           </svg>
         </button>
         <ul class="list-group list-group-horizontal d-none d-md-flex">
+          <li class="list-group-item">
+            <a href="{%url 'posts:create'%}">Contribute</a>
+          </li>
           {% if user.is_authenticated %}
-            <li class="list-group-item">
-              <a href="">Contribute</a>
-            </li>
             <li class="list-group-item">
               <a href="{% url 'accounts:profile' slug=user.profile.slug %}">Profile</a>
             </li>
@@ -39,28 +39,24 @@
             </li>
           {% else %}
             <li class="list-group-item">
-              <a href="{%url 'posts:create' %}">Contribute</a>
-            </li>
-            <li class="list-group-item">
               <a href="{% url 'accounts:register'%}">Sign Up</a>
             </li>
             <li class="list-group-item">
               <a href="{% url 'accounts:login'%}">Login</a>
             </li>
           {% endif %}
-      </ul>
+        </ul>
       </nav>
     </header>
   </div>
   <div class="list-group list-group-flush collapse" id='collapseHeader'>
+    <a href="{%url 'posts:create'%}" class="list-group-item list-group-item-action">
+      Contribute
+    </a>
     {% if user.is_authenticated %}
-      <a href="" class="list-group-item list-group-item-action">Contribute</a>
       <a href="{% url 'accounts:profile' slug=user.profile.slug%}" class="list-group-item list-group-item-action">Profile</a>
       <a href="{% url 'accounts:logout'%}" class="list-group-item list-group-item-action">Logout</a>
     {% else %}
-      <a href="" class="list-group-item list-group-item-action">
-        Contribute
-      </a>
       <a href="{% url 'accounts:register' %}" class="list-group-item list-group-item-action">Sign Up</a>
       <a href="{% url 'accounts:login'%}" class="list-group-item list-group-item-action">Login</a>
     {% endif %}

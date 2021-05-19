@@ -1,5 +1,14 @@
 @import 'variables';
 @import 'header';
+@import 'globals';
+
+.fa-thumbs-up, .fa-download, .fa-trash-alt{
+  color:white;
+  transition: all 0.25s;
+  &:hover{
+    color: $light-blue;
+  }
+}
 
 main{
   .customJtron{
@@ -28,21 +37,28 @@ main{
           }
           .postHeader{
             position: absolute;
-            left: 10px;
-            top: 10px;
+            // left: 10px;
+            // top: 10px;
             width: 100%;
             z-index: 2;
             opacity: 0;
             transition: all 0.25s;
-            h1{
+            .authorInfo{
+              padding: 1em;
               z-index: 2;
-              a{
-                text-decoration: none;
-                color: white;
-                &:hover{
-                  color: $light-blue;
+              h1{
+                a{
+                  text-decoration: none;
+                  color: white;
+                  &:hover{
+                    color: $light-blue;
+                  }
                 }
               }
+            }
+            .authorCommandButtons{
+              padding: 1em;
+              z-index: 2;
             }
             small{
               display: block;
@@ -57,13 +73,6 @@ main{
             z-index: 2;
             opacity: 0;
             transition: all 0.25s;
-            .fa-thumbs-up, .fa-download{
-              color:white;
-              transition: all 0.25s;
-              &:hover{
-                color: $light-blue;
-              }
-            }
           }
           img{
             display: block;
@@ -110,6 +119,11 @@ main{
               h1{
                 a{
                   text-decoration: none;
+                  color: black;
+                }
+              }
+              .authorCommandButtons{
+                .fa-trash-alt, .fa-edit{
                   color: black;
                 }
               }

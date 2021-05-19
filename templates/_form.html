@@ -2,7 +2,8 @@
 {% load static %}
 {% block header_title %}{{action}}{% endblock %}
 {% block css_file %}
-  <link rel="stylesheet" href="{%static 'css/form.css'%}">{% endblock  %}
+  <link rel="stylesheet" href="{%static 'css/form.css'%}">
+{% endblock  %}
 {% load bootstrap5 %}
 {% block content %}
   <div class="container">
@@ -26,7 +27,7 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         <a href="{{cancel_url}}" class="btn btn-warning">Cancel</a>
-        <input type='submit' class="btn btn-primary">Submit</input>
+        <input type='submit' class="btn btn-primary" value='Submit'/>
       </form>
     </div>
   </div>

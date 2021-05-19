@@ -1,3 +1,14 @@
-h1,h2,h3,h4,h5{
-  display: inline-block;
+.modal-body{
+  img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.fa-thumbs-up, .fa-download, .fa-trash-alt, .fa-edit{
+  color:white;
+  transition: all 0.25s;
+  &:hover{
+    color: $light-blue;
+  }
 }
