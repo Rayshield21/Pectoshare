@@ -31,7 +31,13 @@
   {% endif %}
   <img src="{{post.image.url}}" alt="{{post.title}}" class='imageItem'/>
   <div class="postFooter">
-    <button class='btn'><i class='far fa-thumbs-up'></i></button>
+    {% comment %} <form class='d-inline' action="{%url 'posts:like' post_pk=post.id %}" method="POST">
+      {% csrf_token %}
+      <button type='submit' class='btn'><i class='far fa-thumbs-up'></i></button>
+      <span class='likeCount'>{{post.post_likes.count}}</span>
+    </form> {% endcomment %}
+    <a href="{%url 'posts:like' pk=post.id %}" type='submit' class='btn'><i class='far fa-thumbs-up'></i> <span class="likeCount">{{post.post_likes.count}}</span> </a>
+
     <button class='btn'><i class="fas fa-download"></i></button>
   </div>
 </div>

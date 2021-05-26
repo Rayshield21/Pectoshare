@@ -69,6 +69,25 @@ BOOTSTRAP5 = {
     },
 }
 
+# FRONT-END ALERT MESSAGES
+
+MESSAGES = {
+    "WARNING": {
+        "LOGIN_REQUIRED": "You need to log in to access the page!" 
+    },
+    "SUCCESS": {
+        "REGISTER": "User Registration Successful. Please Login!",
+        "LOGOUT": "You have logged out!",
+        "LOGIN": "You successfully logged in!",
+        "PROFILE_UPDATE": "You updated your profile",
+        "POST_ADD": "You added a new image!",
+        "POST_DELETE": "You removed an image!",
+        "POST_UPDATE": "You updated your post",
+        "LIKE": "You liked an image",
+        "UNLIKE": "You unliked an image"
+    },
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

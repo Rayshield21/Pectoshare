@@ -23,4 +23,11 @@ class Post(models.Model):
     else:
       self.date_modified = timezone.now()
     return super(Post, self).save(*args, **kwargs)
-    
+
+class Like(models.Model):
+  is_liked = models.BooleanField()
+  user = models.ForeignKey(User, related_name='user_likes', on_delete=models.CASCADE)
+  post = models.ForeignKey(Post, related_name='post_likes', on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return '{}'.format(self.is_liked)

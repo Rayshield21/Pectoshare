@@ -2,7 +2,7 @@
 @import 'header';
 @import 'globals';
 
-.fa-thumbs-up, .fa-download, .fa-trash-alt{
+.fa-thumbs-up, .fa-download, .fa-trash-alt, .likeCount, .DLCount{
   color:white;
   transition: all 0.25s;
   &:hover{
@@ -13,7 +13,7 @@
 main{
   .customJtron{
     background: url('../images/landingImage.jpeg') fixed no-repeat;
-    height: 75vh;
+    height: 85vh;
   }  
   .postList{
     .container{
@@ -131,6 +131,11 @@ main{
             .postFooter{
               .fa-download, .fa-thumbs-up{
                 color: black;
+              }
+              a{
+                .likeCount, .DLCount{
+                  color: black;
+                }
               }
             }
           }
