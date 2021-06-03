@@ -3,39 +3,28 @@
 @import 'globals';
 main{
   .postDetail{
-    height:100vh;
     width: 100vw;
     margin: 0 auto;
-    // .container{
-      .imageWrapper.zoomed-in{
-        width: 100%;
-        height: 100%;
-      }
-      .imageWrapper.zoomed-out{
-        width: 50%;
-        height: 75%;
-        margin: 0 auto;
-      }
       .imageWrapper{ 
         position: relative;
         color: white;
-        transition: all 0.25s;
-        .stretched-link.zoom-in{
-          cursor: zoom-in;
-        }
-        .stretched-link.zoom-out{
-          cursor: zoom-out;
-        }
-        .postHeader, .postFooter{
-          left: 0;
-          padding: 1em 0;
-          display: block;
-          opacity: 1;
-          position: relative;
-          color: black;
-          z-index:2;
-        }
-        .postHeader{
+        width: 40%;
+        margin: 0 auto;
+      transition: all 0.25s;
+      .stretched-link.zoomModalTrigger{
+        cursor: zoom-in;
+      }
+      .postHeader, .postFooter{
+        left: 0;
+        padding: 1em 0;
+        display: block;
+        opacity: 1;
+        position: relative;
+        color: black;
+        z-index:2;
+      }
+      .postHeader{
+        .userInfo{
           h1{
             a{
               text-decoration: none;
@@ -45,49 +34,184 @@ main{
               }
             }
           }
-          .authorCommandButtons{
-            .fa-trash-alt, .fa-edit{
-              color: black;
-              &:hover{
-                color: $light-blue;
-              }
-            }
-          } 
+          small{
+            display: block;
+          }
         }
-        .postFooter{
-          display: flex;
-          justify-content: flex-end;
-          .fa-download, .fa-thumbs-up{
+        .userCommandButtons{
+          .fa-trash-alt, .fa-edit{
             color: black;
             &:hover{
               color: $light-blue;
             }
           }
         } 
-        img{
-          border: 2px solid black;
-          display: block;
-          // object-fit: cover;
-          width: 100%;
-          height: auto;
-          max-height:100%;
-          // max-width: 100%;
-          transition: all 0.25s;
-          border-radius: 5px;
+      }
+      .postFooter{
+        display: flex;
+        justify-content: flex-end;
+        .fa-download, .fa-thumbs-up, .likeCount{
+          color: black;
+          &:hover{
+            color: $light-blue;
+          }
         }
+      } 
+      img{
+        border: 2px solid black;
+        display: block;
+        // object-fit: cover;
+        width: 100%;
+        height: auto;
+        max-height:100%;
+        // max-width: 100%;
+        transition: all 0.25s;
+        border-radius: 5px;
       }
     }
-  // }
-}
+  }
 
-@media (max-width:725px) and (hover:none){
-  main{
-    .postDetail{
-      .imageWrapper.zoomed-out{
-        width: 75%;
-        height: 60%;
+  .related_posts{
+    .container{
+      .grid{
+        display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-rows: repeat(auto-fit, 260px);
+        grid-gap: 0.3em;
+        grid-auto-flow: dense;
+        .imageWrapper{
+          position: relative;
+          color: white;
+          transition: all 0.25s;
+          &:hover{
+            img{
+              filter: brightness(30%);
+              background-color: transparentize($color: #000000, $amount: 0.3);
+            }
+            :not(img){
+              opacity: 1;
+            }
+          }
+          .postHeader{
+            position: absolute;
+            // left: 10px;
+            // top: 10px;
+            width: 100%;
+            z-index: 2;
+            opacity: 0;
+            transition: all 0.25s;
+            .userInfo{
+              padding: 1em;
+              z-index: 2;
+              h1{
+                a{
+                  text-decoration: none;
+                  color: white;
+                  &:hover{
+                    color: $light-blue;
+                  }
+                }
+              }
+            }
+            .userCommandButtons{
+              padding: 1em;
+              z-index: 2;
+            }
+            small{
+              display: block;
+            }
+          }
+          .postFooter{
+            color: white;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            // width: 100%;
+            z-index: 2;
+            opacity: 0;
+            transition: all 0.25s;
+          }
+          img{
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: all 0.25s;
+            border-radius: 5px;
+          }
+        }
+        // .imageWrapper.landscape{
+        //   grid-column-end: span 4;
+        // }
+        // .imageWrapper.big{
+        //   grid-column-end: span 2;
+        // }
+        // .imageWrapper.portrait{
+        //   grid-row-end: span 3;
+        // }
       }
     }
   }
 }
 
+@media (max-width:725px) and (hover:none){
+  main{
+    .postDetail{
+      .imageWrapper{
+        width: 75%;
+        height: 60%;
+      }
+    }
+    .related_posts{
+      .container{
+        .grid{
+          display: block;
+          .imageWrapper{
+            // position: static;
+            margin-bottom: 1em; 
+            .postHeader, .postFooter{
+              left: 0;
+              padding: 1em 0;
+              display: block;
+              opacity: 1;
+              position: relative;
+              color: black;
+              z-index:2;
+            }
+            .postHeader{
+              .userInfo{
+                padding: 1em;
+                z-index: 2;
+                h1{
+                  a{
+                    text-decoration: none;
+                    color: black;
+                    &:hover{
+                      color: $light-blue;
+                    }
+                  }
+                }
+              }
+              .userCommandButtons{
+                .fa-trash-alt, .fa-edit{
+                  color: black;
+                }
+              }
+            }
+            .postFooter{
+              .fa-download, .fa-thumbs-up{
+                color: black;
+              }
+              a{
+                .likeCount, .DLCount{
+                  color: black;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

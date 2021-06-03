@@ -31,6 +31,26 @@ header{
   }
 }
 .svgLogo{
-  max-width:70px;
-  max-height: 70px;
+  max-width:35px;
+  max-height: 35px;
+}
+
+
+.searchBar{
+  .searchInput{
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .searchButton{
+    border-right: 0;
+    border-top-left-radius: .25rem !important;
+    border-bottom-left-radius: .25rem !important;
+  }
+}
+
+@media (max-width:1000px){
+  .brand{
+    display: none;
+  }
 }

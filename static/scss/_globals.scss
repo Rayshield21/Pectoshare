@@ -1,14 +1,32 @@
-.modal-body{
+img{
+  object-fit: cover;
+}
+
+.deletePostModal .modal-dialog .modal-content > .modal-body{
   img{
     width: 100%;
     height: auto;
   }
 }
 
+.zoomModal .modal-dialog .modal-content > .modal-body{
+  img{
+    width: initial;
+    height: initial;
+  }
+}
 .fa-thumbs-up, .fa-download, .fa-trash-alt, .fa-edit, .likeCount, .DLCount{
   color:white;
   transition: all 0.25s;
   &:hover{
     color: $light-blue;
+  }
+}
+
+.cardListWrapper{
+  // width: 100%;
+  .card{
+    width: 30%;
+    margin-bottom: .5rem;
   }
 }

@@ -1,0 +1,24 @@
+{% extends 'posts/post_base.html' %}
+{% load static %}
+{% block header_title %}Search for {{search}}{% endblock  %}
+{% block css_file %}
+  <link rel="stylesheet" href="{%static 'css/list.css'%}">
+{% endblock  %}
+{% block section_main %}
+<section class='postList'>
+  <div class="container">
+  <h1>Results for {{search}}</h1>
+    <div class="grid">
+      {% for post in post_list %}
+        {% include 'posts/_posts.html' with post=post %}
+      {% empty%}
+        <h1>Nothing matches the search: {{search}}</h1>
+      {% endfor %}
+      </div>
+  </div>
+</section>
+{% endblock  %}
+{% block js_file %}
+  <script src="{%static 'js/list.js'%}" type='text/javascript'></script>
+  <script src="{%static 'js/modal.js'%}" type='text/javascript'></script>
+{% endblock  %}

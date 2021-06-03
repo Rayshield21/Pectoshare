@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load bootstrap5 %}
+{% url 'home' as home_url %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,6 +22,15 @@
           <img src="{%static 'images/logo.svg' %}" alt="Brand Logo" class='svgLogo'>
           <span class="brand ms-2">PectoShare</span>
         </a>
+        {% if request.path != home_url %}
+          <form action="{%url 'posts:search_title' %}" method="GET" class="searchBar input-group w-50 mx-2">
+            {% csrf_token %}
+            <button class="btn searchButton btn-outline-secondary" type="submit" id="">
+              <i class="fas fa-search-plus"></i>
+            </button>
+            <input type="text" name='query' class="form-control border-secondary searchInput" placeholder="Search photos" aria-label="Search" aria-describedby="button-addon"/>
+          </form>
+        {% endif %}
         <button class='mr-3 btn btn-sm collapseToggler d-block d-md-none' data-bs-toggle='collapse' href='#collapseHeader'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" width='30' height='30' viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
@@ -30,9 +40,12 @@
           <li class="list-group-item">
             <a href="{%url 'posts:create'%}">Contribute</a>
           </li>
+          <li class="list-group-item">
+            <a href="{%url 'posts:topics'%}">Topics</a>
+          </li>
           {% if user.is_authenticated %}
             <li class="list-group-item">
-              <a href="{% url 'accounts:profile' slug=user.profile.slug %}">Profile</a>
+              <a href="{% url 'accounts:profile' slug=user.profile.slug %}">{{user}}</a>
             </li>
             <li class="list-group-item">
               <a href="{% url 'accounts:logout'%}">Logout</a>
@@ -54,7 +67,7 @@
       Contribute
     </a>
     {% if user.is_authenticated %}
-      <a href="{% url 'accounts:profile' slug=user.profile.slug%}" class="list-group-item list-group-item-action">Profile</a>
+      <a href="{% url 'accounts:profile' slug=user.profile.slug%}" class="list-group-item list-group-item-action">{{user}}</a>
       <a href="{% url 'accounts:logout'%}" class="list-group-item list-group-item-action">Logout</a>
     {% else %}
       <a href="{% url 'accounts:register' %}" class="list-group-item list-group-item-action">Sign Up</a>

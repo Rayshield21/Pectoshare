@@ -73,7 +73,8 @@ BOOTSTRAP5 = {
 
 MESSAGES = {
     "WARNING": {
-        "LOGIN_REQUIRED": "You need to log in to access the page!" 
+        "LOGIN_REQUIRED": "You need to log in to access the page!",
+        "PERMISSION_DENIED": "Access Denied. You are not the content owner", 
     },
     "SUCCESS": {
         "REGISTER": "User Registration Successful. Please Login!",

@@ -5,12 +5,62 @@
 {% endblock  %}
 {% block section_main %}
   <section class='postDetail'>
-    {% comment %} <div class="container mb-3 "> {% endcomment %}
       {% include 'posts/_posts.html' %}
-    {% comment %} </div> {% endcomment %}
   </section>
+  <section class="related_posts">
+    <div class="container">
+      <h1>Related Posts</h1>
+      <div class="grid">
+        {% for post in related_posts %}
+          {% include 'posts/_posts.html' with post=post %}
+        {% empty%}
+          <h1>none</h1>
+        {% endfor %}
+        </div>
+    </div>
+  </section>
+   <!-- DELETE POST MODAL -->
+  <div class="modal deletePostModal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Delete Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <form class='deletePostForm' method="POST">
+            {% csrf_token %}
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class='btn btn-primary' value='Delete'/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZOOM MODAL-->
+  <div class="modal zoomModal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{post.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock  %}
 {% block js_file %}
-  <script src="{%static 'js/detail.js'%}" type='text/javascript'></script>
+  {% comment %} <script src="{%static 'js/detail.js'%}" type='text/javascript'></script> {% endcomment %}
+  <script src="{%static 'js/list.js'%}" type='text/javascript'></script>
   <script src="{%static 'js/modal.js'%}" type='text/javascript'></script>
 {% endblock  %}

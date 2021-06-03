@@ -25,9 +25,11 @@
         </div>
         <div class="flex justify-content-around">
           <span class='fs-3'>{{profile.user}}</span>
-          <a href="{% url 'accounts:edit_profile' slug=profile.slug pk=profile.pk%}" class='btn btn-primary align-self-top' aria-label='Edit Profile'> 
+          {% if user.is_authenticated and request.user == profile.user %}
+            <a href="{% url 'accounts:edit_profile' slug=profile.slug%}" class='btn btn-primary align-self-top' aria-label='Edit Profile'> 
             <i class="fas fa-user-edit"></i>
           </a>
+          {% endif %}
         </div>
       </div>
       <div class="col-sm-9">

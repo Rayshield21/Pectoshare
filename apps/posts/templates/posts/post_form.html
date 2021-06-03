@@ -1,8 +1,9 @@
-{% url 'home' as cancel_url%}
 {% if not form.instance.pk %}
+  {% url 'home' as cancel_url%}
   {% url 'posts:create' as action_url %}
   {% include '_form.html' with action='Create Post' form_url=action_url enctype='multipart/form-data' cancel_url=cancel_url%}
 {% else %}
+  {% url 'posts:single' pk=form.instance.pk as cancel_url%}
   {% url 'posts:edit' pk=form.instance.pk as action_url %}
   {% include '_form.html' with action='Update Post' form_url=action_url enctype='multipart/form-data' cancel_url=cancel_url%}
 {% endif %}

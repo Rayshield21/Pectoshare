@@ -1,0 +1,22 @@
+{% extends 'posts/post_base.html' %}
+{% load static %}
+{% block header_title %}Topics{% endblock  %}
+{% block css_file %}
+  <link rel="stylesheet" href="{%static 'css/list.css'%}">
+{% endblock  %}
+{% block section_main %}
+<div class="container">
+  <div class="d-flex justify-content-between cardListWrapper flex-wrap">
+    {% for category in categories_list %}
+      <div class="card border-info rounded">
+        <img src="{{category.cover_image.url}}" alt="topic_image"/>
+        <div class="card-body">
+          <h5 class="card-title">{{category.name}}</h5>
+          <p class="card-text">{{category.description}}</p>
+          <a href="{%url 'posts:topic_posts' slug=category.slug%}" class="stretched-link"></a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock  %}

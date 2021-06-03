@@ -1,20 +1,21 @@
-{% url "posts:single" pk=post.pk as post_url %}
+{% url "posts:single" pk=post.pk as post_detail_url %}
 <div class="imageWrapper">
   <div class="postHeader d-flex justify-content-between">
-    <div class='authorInfo'>
+    <div class='userInfo'>
       <h1 class='fs-5 m-0'>
-        <a href="{%url 'accounts:profile' slug=post.author.profile.slug%}">
-          {{post.author}}
+        <a href="{%url 'accounts:profile' slug=post.user.profile.slug%}">
+          {{post.user}}
         </a>
       </h1>
+      <small>{{post.user.profile.status}}</small>
       {% if post.date_modified %}
-        <small>{{post.date_modified}} (edited)</small>
+        <small class='fw-lighter'>{{post.date_modified}} (edited)</small>
       {% else %}
-        <small>{{post.date_added}}</small>
+        <small class='fw-lighter'>{{post.date_added}}</small>
       {% endif %}
     </div>
-    {% if user.is_authenticated and post.author == user %}
-      <div class="authorCommandButtons">
+    {% if user.is_authenticated and post.user == user %}
+      <div class="userCommandButtons">
         <a href="{% url 'posts:update' pk=post.pk %}" class="btn">
           <i class="far fa-edit"></i>
         </a>
@@ -24,20 +25,14 @@
       </div>
     {% endif %}
   </div>
-  {% if request.path != post_url %}
+  {% if request.path != post_detail_url %}
     <a href="{% url 'posts:single' pk=post.pk%}" class='stretched-link' role='button'></a>
   {% else %}
-    <a href="#" class='stretched-link zoom-in' role='button'></a>
+    <a href="#" class='stretched-link zoomModalTrigger' role='button'></a>
   {% endif %}
   <img src="{{post.image.url}}" alt="{{post.title}}" class='imageItem'/>
   <div class="postFooter">
-    {% comment %} <form class='d-inline' action="{%url 'posts:like' post_pk=post.id %}" method="POST">
-      {% csrf_token %}
-      <button type='submit' class='btn'><i class='far fa-thumbs-up'></i></button>
-      <span class='likeCount'>{{post.post_likes.count}}</span>
-    </form> {% endcomment %}
     <a href="{%url 'posts:like' pk=post.id %}" type='submit' class='btn'><i class='far fa-thumbs-up'></i> <span class="likeCount">{{post.post_likes.count}}</span> </a>
-
-    <button class='btn'><i class="fas fa-download"></i></button>
+    <a href="{{post.image.url}}" class='btn' download="{{post.title}}"><i class="fas fa-download"></i></a>
   </div>
 </div>

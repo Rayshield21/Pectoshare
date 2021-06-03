@@ -1,0 +1,25 @@
+{% extends 'posts/post_base.html' %}
+{% load static %}
+{% block header_title %}{{Category}} posts{% endblock  %}
+{% block css_file %}
+  <link rel="stylesheet" href="{%static 'css/list.css'%}">
+{% endblock  %}
+{% block section_main %}
+<section class='postList'>
+  <div class="container">
+  <h1>{{category.name}}</h1>
+    <div class="grid">
+      {% for post in category.category_posts.all %}
+        {% include 'posts/_posts.html' with post=post %}
+      {% endfor %}
+    </div>
+    {% if not category.category_posts.count %}
+      <h1>No posts in {{category.name}}</h1>
+    {% endif %}
+  </div>
+</section>
+{% endblock  %}
+{% block js_file %}
+  <script src="{%static 'js/list.js'%}" type='text/javascript'></script>
+  <script src="{%static 'js/modal.js'%}" type='text/javascript'></script>
+{% endblock  %} 
